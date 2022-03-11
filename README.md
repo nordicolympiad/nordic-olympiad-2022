@@ -1,0 +1,1 @@
+# nordic-olympiad-2022
