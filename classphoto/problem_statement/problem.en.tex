@@ -1,0 +1,40 @@
+\problemname{Class Photo}
+When taking photos of large groups it is important to arrange the persons so their height fits each other.
+This however requires actually knowing the heights of the subjects.
+The company National Olarpoid Inc. has been tasked with taking a picture of all the children in the kindergarten Newly Offsprung Informaticists.
+You have been given the job of figuring out the heights of all the children.
+
+The kindergarden consists of $N$ children, numbered $1, \ldots, N$.
+It would be nice if the children would just tell you their heights, though sadly this isn't the case.
+They have instead turned it into a guessing game, where you have to guess their heights.
+For this game, the height of the $i$'th child is $h_i$.
+All the $h_i$'s are distinct.
+
+The way the guesses work is that you announce an integer for a possible height of the children.
+The children, annoying as they are, will then tell you the child that is the second closest in height to your guess, as well as the absolute value of how far off you were.
+If it is the $i$'th child that was the answer for the guess $g$, then you also get told the value $|h_i - g|$.
+In the case that multiple children are tied to be considered the second closest, the tallest one will be the answer.
+This is both in the case where the closest and the second closest is tied, and when the second closest and the third closest is tied.
+
+Additionally, you are allowed to try and answer the height of the children during the game.
+You will then be told whether you were right.
+You are however only allowed $n+1$ of these guesses, and you should guess all $n$ children.
+
+The children are not very patient, so you have to be quick to guess the heights of all the children.
+Write a program that guesses and based on the answers computes the heights of all the children.
+
+\section*{Interaction}
+Your program will interact with the judge by reading from standard in and writing to standard out.
+First, the judge will output a line containing the number of students $n$.
+
+Then, tour program should write each guess in the following format:
+\begin{itemize}
+\item \texttt{close g}: the answer will be 2 integers, $c$ and $b$, where $c$ is the number of the child that is second closest to the guess $g$ and $b$ is the absolute value of the difference between $g$ and the actual height of child $a$.
+You are allowed at most (about $30 \cdot n$) questions of this type.
+\item \texttt{is g h}: this will return a single integer, either $0$ or $1$, corresponding to the boolean value of whether child $g$ has height $h$. You are allowed at most $n+1$ questions of this type.
+\end{itemize}
+
+\section*{Grading}
+Constraints:
+  * $2 \le n \le 1000$
+  * $1 \le h_i \le 10^9$

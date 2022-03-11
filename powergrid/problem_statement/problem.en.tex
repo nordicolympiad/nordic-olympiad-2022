@@ -1,0 +1,33 @@
+\problemname{Power Grid}
+A city consists of a rectangular $N \times M$ grid of blocks.
+Each block $(i, j)$ has some unknown power consumption $A_{i, j}$.
+Some of the city blocks house power stations, while some might have no buildings in them at all, so it's possible that $A_{i, j}$ is positive, negative or even zero.
+
+Previously the city lived in an era of almost unlimited free energy thanks to cheap solar power, but after an incident involving the collisions of millions of Internet-providing satellites resulted in only half of all sunlight being able to reach Earth, your power plants have reverted to more expensisve energy sources.
+As a result, the energy company must start billing its customers for their power usage.
+Unfortunately nobody bothered to install proper electricity meters.
+
+While you lack measurements of block-level power usage, the company is able to use the power consumption on a row- and column-basis in the city to infer, for each block, a number
+$$C_{i, j} = \left| \sum_{k=1}^N A_{k, j} - \sum_{k=1}^M A_{i, k} \right| \text{,}$$
+that is, the difference in the total power consumption of all blocks on the $i$'th column compared to the $j$'th column for each $i, j$.
+
+Using these numbers, can you reconstruct the original power consumptions $A_{i, j}$?
+
+\section*{Input}
+The first line contains the dimensions of the city $N$ and $M$ ($1 \le N, M \le 1\,000$).
+This is followed by $N$ lines each containing $M$ integers, where the $j$'th number on the $i$'th line equals $C_{i, j}$ ($0 \le C_{i, j} \le 1\,000$).
+
+\section*{Output}
+Output $N$ lines each containing $M$ integers, where the $j$'th number on the $i$'th line equals $A_{i, j}$.
+If there are several possible choices of $A_{i, j}$ that are valid, you may output any of them.
+
+\section*{Grading}
+Delpoäng:
+1) N = 1
+2) Alla Cij är samma och N,M >= 2
+3) Alla Cij är olika och N,M >= 2
+4) N,M,Cij <= 3
+5) N,M,Cij <= 6
+6) Cij <= 1
+7) N=M
+8) N,M,Cij <= 100
