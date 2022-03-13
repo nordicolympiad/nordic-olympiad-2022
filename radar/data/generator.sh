@@ -12,26 +12,22 @@ limits n=-1 nq=-1
 sample 1
 sample 2
 
-SCORE=20
 NQ=150
-group group1 $SCORE
-limits nq=$NQ
-tc g1-1 gen_random nq=$NQ score=$SCORE
+group group1 20
+limits nq=$NQ one=1
+tc g1-1 gen_random nq=$NQ one=1
 
-SCORE=20
 NQ=56
-group group2 $SCORE
+group group2 25
 limits nq=$NQ
-tc g2-1 gen_random nq=$NQ score=$SCORE
+tc g2-1 gen_random nq=$NQ
 
-SCORE=35
 NQ=35
-group group3 $SCORE
+group group3 30
 limits nq=$NQ
-tc g3-1 gen_random nq=$NQ score=$SCORE
+tc g3-1 gen_random nq=$NQ
 
-SCORE=25
 NQ=25
-group group4 $SCORE
+group group4 25
 limits nq=$NQ
-tc g4-1 gen_random nq=$NQ score=$SCORE
+tc g4-1 gen_random nq=$NQ

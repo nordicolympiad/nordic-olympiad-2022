@@ -13,10 +13,10 @@ void run() {
 	int q = nq * n;
 	if (nq == -1) q = Int(1, 1000);
 	else Int(q, q);
-	Space();
-	Int(0, 100);
 	Endl();
 	vector<ll> v = SpacedInts(n, MIN_GUESS, MAX_GUESS);
 	assert(is_sorted(v.begin(), v.end()));
 	assert(unique(v.begin(), v.end()) == v.end());
+	if (Arg("one", 0))
+		assert(v[0] == 1);
 }

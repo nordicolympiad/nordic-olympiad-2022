@@ -3,6 +3,6 @@ source: Nordic Olympiad in Informatics 2022
 rights_owner: Programmeringsolympiaden
 license: cc by-sa
 type: scoring
-validation: custom score interactive
+validation: custom interactive
 grading:
   show_test_data_groups: yes

@@ -13,11 +13,14 @@ def cmdlinearg(name, default=None):
 random.seed(int(cmdlinearg('seed', sys.argv[-1])))
 n = int(cmdlinearg('n', 100))
 nq = int(cmdlinearg('nq'))
-score = int(cmdlinearg('score'))
 q = nq * n
 
-print(n, q, score)
+print(n, q)
 
 values = random.sample(range(1, 10**18), n)
 values.sort()
+
+if cmdlinearg('one', ''):
+    values[0] = 1
+
 print(*values)

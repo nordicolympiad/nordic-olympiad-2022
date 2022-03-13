@@ -30,22 +30,6 @@ In C you can use \verb@fflush(stdout);@ after \texttt{printf()}.
 If you make more than $Q$ queries or make an invalid query, your program may receive \emph{either} Wrong Answer or Run Time Error.
 To be guaranteed an unambiguous Wrong Answer verdict, you should terminate your program just before making the $Q+1$'th \texttt{?}-type query.
 
-There are two additional kinds of queries you can make use of, at the cost of a reduced score for your submission:
-
-\begin{itemize}
-  \item \texttt{?.5 x}: find the distance to the second closest point to $x + 0.5$.
-    The judge will respond with two space-separated numbers $r$, $m$,
-    where $r$ is the distance to the second closest point \emph{rounded down},
-    and $m$ is the number of points at that distance (either $1$ or $2$).
-    This counts towards the limit on \texttt{?}-type queries.
-  \item \texttt{?1}: find the position of the first point.
-\end{itemize}
-
-If using just one of the additional queries types, your submission's score on the test group they are used in will be reduced by $30\%$.
-If using both, it will be reduced by $60\%$.
-
-% TODO: replace this by a test group where $x_1 = 1$? it feels too complicated
-
 \section*{Scoring}
 Your solution will be tested on a set of test groups, each worth a number of points.
 To get the points for a test group you need to solve all test cases in the test group.
@@ -54,8 +38,8 @@ To get the points for a test group you need to solve all test cases in the test 
 \begin{tabular}{| l | l | l |}
   \hline
   Group & Points & Constraints \\ \hline
-  $1$   & $20$   & $Q = 15\,000$ \\ \hline
-  $2$   & $20$   & $Q = 5\,600$ \\ \hline
-  $3$   & $35$   & $Q = 3\,500$ \\ \hline
+  $1$   & $20$   & $Q = 15\,000$, and one of the points will be located at position $1$ \\ \hline
+  $2$   & $25$   & $Q = 5\,600$ \\ \hline
+  $3$   & $30$   & $Q = 3\,500$ \\ \hline
   $4$   & $25$   & $Q = 2\,500$ \\ \hline
 \end{tabular}
