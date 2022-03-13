@@ -1,0 +1,8 @@
+author: David Rasmussen Lolck, Simon Lindholm
+source: Nordic Olympiad in Informatics 2022
+rights_owner: Programmeringsolympiaden
+license: cc by-sa
+type: scoring
+validation: custom score interactive
+grading:
+  show_test_data_groups: yes

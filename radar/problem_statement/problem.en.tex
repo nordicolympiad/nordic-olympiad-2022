@@ -1,0 +1,61 @@
+\problemname{Radar}
+TODO story
+
+There are $N$ points on a number line, and you want to find them by making a limited number of queries that ask for the distance to the second closest point to some provided coordinate $x$.
+
+That is, if the points have distances $d_1, d_2, \ldots, d_n$ to $x$, we sort them in increasing order and answer with $d_2$.
+
+All coordinates are unique and between $1$ and $10^{18}$.
+
+\section*{Interaction}
+Your program will interact with the judge by reading from standard in and writing to standard out.
+First, the judge will output a line containing the number of points $N$ ($2 \le N \le 100$), and the maximum number of queries allowed $Q$.
+
+Then, your program can make queries of the following forms:
+
+\begin{itemize}
+  \item \texttt{? x} ($1 \le x \le 10^{18}$): find the distance to the second closest point to $x$.
+    The judge will respond with two space-separated numbers $r$, $m$,
+    where $r$ is the distance to the second closest point, and $m$ is the number of points at that distance (either $1$ or $2$).
+    You may make at most $Q$ queries of this type.
+  \item \texttt{! $a_1$ $a_2$ ... $a_n$}: guess the positions of the points ($1 \le a_i \le 10^{18}$).
+    $a_1, a_2, \ldots, a_n$ may be given in any order.
+    No additional queries should be made after this.
+\end{itemize}
+
+After each query, you should make sure to flush standard output before reading the judge's response, or your solution may end up graded as Time Limit Exceeded.
+In Python this happens automatically, and in C++ it happens when using \verb@cout << endl@ to print a newline.
+In C you can use \verb@fflush(stdout);@ after \texttt{printf()}.
+
+If you make more than $Q$ queries or make an invalid query, your program may receive \emph{either} Wrong Answer or Run Time Error.
+To be guaranteed an unambiguous Wrong Answer verdict, you should terminate your program just before making the $Q+1$'th \texttt{?}-type query.
+
+There are two additional kinds of queries you can make use of, at the cost of a reduced score for your submission:
+
+\begin{itemize}
+  \item \texttt{?.5 x}: find the distance to the second closest point to $x + 0.5$.
+    The judge will respond with two space-separated numbers $r$, $m$,
+    where $r$ is the distance to the second closest point \emph{rounded down},
+    and $m$ is the number of points at that distance (either $1$ or $2$).
+    This counts towards the limit on \texttt{?}-type queries.
+  \item \texttt{?1}: find the position of the first point.
+\end{itemize}
+
+If using just one of the additional queries types, your submission's score on the test group they are used in will be reduced by $30\%$.
+If using both, it will be reduced by $60\%$.
+
+% TODO: replace this by a test group where $x_1 = 1$? it feels too complicated
+
+\section*{Scoring}
+Your solution will be tested on a set of test groups, each worth a number of points.
+To get the points for a test group you need to solve all test cases in the test group.
+
+\noindent
+\begin{tabular}{| l | l | l |}
+  \hline
+  Group & Points & Constraints \\ \hline
+  $1$   & $20$   & $Q = 15\,000$ \\ \hline
+  $2$   & $20$   & $Q = 5\,600$ \\ \hline
+  $3$   & $35$   & $Q = 3\,500$ \\ \hline
+  $4$   & $25$   & $Q = 2\,500$ \\ \hline
+\end{tabular}
