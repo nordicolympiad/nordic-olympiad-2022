@@ -3,11 +3,11 @@ A city consists of a rectangular $N \times M$ grid of blocks.
 Each block $(i, j)$ has some unknown power consumption $A_{i, j}$.
 Some of the city blocks house power stations, while some might have no buildings in them at all, so it's possible that $A_{i, j}$ is positive, negative or even zero.
 
-Previously the city lived in an era of almost unlimited free energy thanks to cheap solar power, but after an incident involving the collisions of millions of Internet-providing satellites resulted in only half of all sunlight being able to reach Earth, your power plants have reverted to more expensisve energy sources.
+Previously the city lived in an era of almost unlimited free energy thanks to cheap solar power, but after an incident involving the collisions of millions of Internet-providing satellites resulted in only half of all sunlight being able to reach Earth, your power plants have reverted to more expensive energy sources.
 As a result, the energy company must start billing its customers for their power usage.
 Unfortunately nobody bothered to install proper electricity meters.
 
-While you lack measurements of block-level power usage, the company is able to use the power consumption on a row- and column-basis in the city to infer, for each block, a number
+While you lack measurements of block-level power usage, the company is able to use the power consumption on a row and column basis in the city to infer, for each block, a number
 $$C_{i, j} = \left| \sum_{k=1}^N A_{k, j} - \sum_{k=1}^M A_{i, k} \right| \text{,}$$
 that is, the difference in the total power consumption of all blocks on the $i$'th column compared to the $j$'th column for each $i, j$.
 
