@@ -30,16 +30,17 @@ def random_points(minv, maxv):
 if mode == 'random':
     values = random_points(minv, maxv)
 
-elif mode == 'dense':
+elif mode in ('dense', 'dense4'):
     # Dense point sets test correctness.
-    values = random_points(minv, minv + n * 5 // 2)
+    k = 5 if mode == 'dense' else 3
+    values = random_points(minv, minv + n * k // 2)
 
-elif mode == 'dense-mid':
+elif mode == 'dense2':
     minv = random.randint(1, maxv - 10**9)
-    values = random_points(minv, minv + n * 5 // 2)
+    values = random_points(minv, minv + n * 7 // 2)
 
-elif mode == 'dense-far':
-    values = random_points(maxv - n * 5 // 2, maxv)
+elif mode == 'dense3':
+    values = random_points(maxv - n * 4 // 2, maxv)
 
 elif mode in ('incr', 'decr', 'incrdecr'):
     # Increasing/decreasing distances. This is the worst case when doing a full
@@ -47,7 +48,7 @@ elif mode in ('incr', 'decr', 'incrdecr'):
     values = random_points(minv, maxv)
     diffs = [b - a for a,b in zip(values, values[1:])]
     diffs.sort(reverse=(mode == 'decr'))
-    if mode == 'incrdec':
+    if mode == 'incrdecr':
         diffs = diffs[:n//2] + diffs[:n//2-1:-1]
     for i in range(1, n):
         values[i] = values[i - 1] + diffs[i - 1]
@@ -57,10 +58,11 @@ elif mode == 'alternating':
     # left -> right or right -> left in a memoryless fashion.
     values = random_points(minv, maxv)
     for i in range(1, n, 2):
-        values[i] = values[i - 1] + 1
+        lim = maxv if i + 1 == n else values[i + 1] - 1
+        add = 1
         if random.random() < 0.1:
-            lim = maxv if i + 1 == n else values[i + 1] - 1
-            values[i] = min(lim, values[i] + random.randint(1, 4))
+            add = random.randint(1, 4)
+        values[i] = min(lim, values[i - 1] + add)
 
 elif mode == 'alternating2':
     # Alternating longer/shorter distances. Not sure if useful.
@@ -103,6 +105,23 @@ elif mode == 'alternating3':
             lim = maxv if i + 1 == n else values[i + 1] - 1
             b = min(lim, b + random.randint(1, 4))
         values[i], values[i+1] = a, b
+
+elif mode == 'patterns':
+    # Distances all roughly equal, or roughly 1, or following the ambiguous pattern 1 1 1 2 1 1 1 2 ...
+    # This makes averages more likely to hit interesting points.
+    space = maxv // n
+    values = [space]
+    pat = [1, 1, 1, 2] * 10
+    while len(values) < n:
+        if random.random() < 0.05:
+            length = random.randint(5, 9)
+            offset = random.randint(1, 4)
+            if len(values) + length <= n:
+                for x in pat[offset : offset + length]:
+                    values.append(values[-1] + x)
+                continue
+        x = random.choice([space, space, space + 1, space + 1, space - 1, 1, 1, 2])
+        values.append(values[-1] + x)
 
 else:
     raise Exception(f"unknown mode {mode}")
