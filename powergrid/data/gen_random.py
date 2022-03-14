@@ -15,15 +15,11 @@ n = int(cmdlinearg('n', 10))
 m = int(cmdlinearg('m', 10))
 maxc = int(cmdlinearg('maxc', 1000))
 changes = int(cmdlinearg('changes', 0))
-mode = cmdlinearg('mode', 'random')
+mode = cmdlinearg('mode', 'valid')
 
 C = []
 
-if mode == "random":
-    for i in range(0, n):
-        row = [random.randint(0, maxc) for _ in range(m)]
-        C.append(row)
-elif mode == "valid":
+if mode == "valid":
     row_sum = [random.randint(-maxc//2, maxc//2) for _ in range(n)]
     col_sum = [random.randint(-maxc//2, maxc//2) for _ in range(m)]
     rsum = sum(row_sum)

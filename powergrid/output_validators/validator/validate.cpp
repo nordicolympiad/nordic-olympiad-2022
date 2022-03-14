@@ -28,24 +28,6 @@ void check_case(){
             judge_in >> C[c1][c2];
         }
     }
-    
-    string judge, author;
-    judge_ans >> judge;
-
-    if(!(author_out >> author)){
-        wrong_answer("Could not read first line of input");
-    }
-    TOUPPER(judge);
-    TOUPPER(author);
-    if(author != "YES" && author != "NO"){
-        wrong_answer("First line of output wasn't 'yes' or 'no'");
-    }
-    if(author == "NO"){
-        if(judge == "YES"){
-            wrong_answer("Output was 'no' but judge found a solution");
-        }
-        return;
-    }
 
     vector<vi> A(n, vi(m));
     for(int c1 = 0; c1 < n; c1++){
@@ -78,10 +60,6 @@ void check_case(){
                 wrong_answer("Rowsum %d and columnsum %d did not correspond to C", c1+1, c2+1);
             }
         }
-    }
-
-    if(judge == "NO"){
-        judge_error("Judge says 'no' but contestants solution was valid.\n");
     }
 }
 

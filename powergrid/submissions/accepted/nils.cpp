@@ -360,7 +360,6 @@ int main() {
     }
 
     if(!fail){
-        cout << "YES\n";
         get_grid();
         rep(c1,0,n){
             rep(c2,0,m){
@@ -370,7 +369,7 @@ int main() {
         assert(verify_solution());
     }
     else{
-        cout << "NO\n";
+        assert(0);
     }
     return 0;
 }
