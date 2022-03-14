@@ -9,13 +9,15 @@ Unfortunately nobody bothered to install proper electricity meters.
 
 While you lack measurements of block-level power usage, the company is able to use the power consumption on a row and column basis in the city to infer, for each block, a number
 $$C_{i, j} = \left| \sum_{k=1}^N A_{k, j} - \sum_{k=1}^M A_{i, k} \right| \text{,}$$
-that is, the difference in the total power consumption of all blocks on the $i$'th column compared to the $j$'th column for each $i, j$.
+that is, the difference in the total power consumption of all blocks on the $i$'th row compared to the $j$'th column for each $i, j$.
 
 Using these numbers, can you reconstruct the original power consumptions $A_{i, j}$?
 
 \section*{Input}
 The first line contains the dimensions of the city $N$ and $M$ ($1 \le N, M \le 1\,000$).
 This is followed by $N$ lines each containing $M$ integers, where the $j$'th number on the $i$'th line equals $C_{i, j}$ ($0 \le C_{i, j} \le 1\,000$).
+
+The input has been constructed in such a way that a solution always exists.
 
 \section*{Output}
 Output $N$ lines each containing $M$ integers, where the $j$'th number on the $i$'th line equals $A_{i, j}$.
