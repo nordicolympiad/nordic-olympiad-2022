@@ -14,16 +14,18 @@ sample 2
 
 gen_all() {
 	g=g$1
-	tc $g-rand gen_random t=$1
+	tc $g-rand gen_random t=$1 mode=random
 	tc $g-dense1 gen_random t=$1 mode=dense
 	tc $g-dense2 gen_random t=$1 n=40 mode=dense-mid
 	tc $g-dense3 gen_random t=$1 n=40 mode=dense-far
 	tc $g-dense4 gen_random t=$1 n=5 mode=dense
-	tc $g-tiny gen_random t=$1 n=3
+	tc $g-tiny gen_random t=$1 n=3 mode=random
 	tc $g-incr gen_random t=$1 mode=incr
 	tc $g-decr gen_random t=$1 mode=decr
+	tc $g-incrdecr gen_random t=$1 mode=incrdecr
 	tc $g-alt gen_random t=$1 mode=alternating
 	tc $g-alt2 gen_random t=$1 mode=alternating2
+	tc $g-alt3 gen_random t=$1 mode=alternating3
 }
 
 group group1 40
