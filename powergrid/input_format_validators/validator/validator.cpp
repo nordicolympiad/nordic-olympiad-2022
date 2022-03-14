@@ -18,11 +18,14 @@ void run() {
 
   bool samec = Arg("samec", 0);
   bool diffc = Arg("diffc", 0);
+  bool square = Arg("square", 0);
 
   int n = Int(1,maxn);
   Space();
   int m = Int(1,maxm);
   Endl();
+
+  if(square)assert(n == m);
 
   set<int> S;
   for(int c1 = 0; c1 < n; c1++){
