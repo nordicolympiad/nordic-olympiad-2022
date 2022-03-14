@@ -15,7 +15,7 @@ const ll n1e18 = 1'000'000'000'000'000'000;
 const ll MIN_GUESS = -n1e18;
 const ll MAX_GUESS = 2*n1e18;
 
-const int groupScores[] = {0, 40, 50, 10};
+const int groupScores[] = {0, 40, 40, 20};
 
 int scoreQueries(int Q) {
 	if (Q > 15000) return 0;
