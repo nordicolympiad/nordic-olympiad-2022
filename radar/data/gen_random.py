@@ -40,6 +40,38 @@ if mode in ('incr', 'decr'):
     for i in range(1, n):
         values[i] = values[i - 1] + diffs[i - 1]
 
+if mode == 'alternating':
+    for i in range(1, n, 2):
+        values[i] = values[i - 1] + 1
+        if random.random() < 0.1:
+            lim = maxv if i + 1 == n else values[i + 1] - 1
+            values[i] = min(lim, values[i] + random.randint(1, 4))
+
+if mode == 'alternating2':
+    diffs = [b - a for a,b in zip(values, values[1:])]
+    diffs.sort()
+    at = 0
+    for i in range(1, n):
+        if i % 2 == 0:
+            # lower
+            atlim = at
+            if i != n-1 and atlim == len(diffs):
+                # impossible to continue if len(diffs)-1 is chosen
+                atlim -= 1
+            at = random.randrange(0, atlim)
+            val = diffs[at]
+            del diffs[at]
+        else:
+            # higher
+            atlim = at
+            if i != n-1 and atlim == 0:
+                # impossible to continue if 0 is chosen
+                atlim += 1
+            at = random.randrange(atlim, len(diffs))
+            val = diffs[at]
+            del diffs[at]
+        values[i] = values[i - 1] + val
+
 if t == 1:
     s = values[0] - 1
     values = [x - s for x in values]

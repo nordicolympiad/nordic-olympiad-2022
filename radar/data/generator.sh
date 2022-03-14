@@ -22,6 +22,8 @@ gen_all() {
 	tc $g-tiny gen_random t=$1 n=3
 	tc $g-incr gen_random t=$1 mode=incr
 	tc $g-decr gen_random t=$1 mode=decr
+	tc $g-alt gen_random t=$1 mode=alternating
+	tc $g-alt2 gen_random t=$1 mode=alternating2
 }
 
 group group1 40
