@@ -8,26 +8,23 @@ use_solution ../empty.py
 compile gen_random.py
 
 samplegroup
-limits n=-1 nq=-1
+limits t=0
 sample 1
 sample 2
 
-NQ=150
-group group1 20
-limits nq=$NQ one=1
-tc g1-1 gen_random nq=$NQ one=1
+gen_all() {
+	g=g$1
+	tc $g-1 gen_random t=$1
+}
 
-NQ=56
-group group2 25
-limits nq=$NQ
-tc g2-1 gen_random nq=$NQ
+group group1 40
+limits t=1
+gen_all 1
 
-NQ=35
-group group3 30
-limits nq=$NQ
-tc g3-1 gen_random nq=$NQ
+group group2 50
+limits t=2
+gen_all 2
 
-NQ=25
-group group4 25
-limits nq=$NQ
-tc g4-1 gen_random nq=$NQ
+group group3 10
+limits t=3
+gen_all 3

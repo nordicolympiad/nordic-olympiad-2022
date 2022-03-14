@@ -1,3 +1,5 @@
+// Q ~ 60 * N => r = 0.4, but only solves test group 1 (assumes first element is 1)
+// Should get 0.4 * 40 = 16 points
 #include <bits/stdc++.h>
 using namespace std;
 

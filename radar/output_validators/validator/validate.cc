@@ -11,14 +11,27 @@ typedef pair<int, int> pii;
 typedef vector<int> vi;
 typedef long double ld;
 
-const ll MIN_GUESS = 1;
-const ll MAX_GUESS = 1'000'000'000'000'000'000;
+const ll n1e18 = 1'000'000'000'000'000'000;
+const ll MIN_GUESS = -n1e18;
+const ll MAX_GUESS = 2*n1e18;
+
+const int groupScores[] = {0, 40, 50, 10};
+
+int scoreQueries(int Q) {
+	if (Q > 15000) return 0;
+	if (Q > 5600) return 40;
+	if (Q > 3500) return 60;
+	if (Q > 2500) return 80;
+	return 100;
+}
 
 int main(int argc, char **argv) {
 	init_io(argc, argv);
 
-	int N, Q;
-	judge_in >> N >> Q;
+	int N, T, printT;
+	judge_in >> N >> T;
+	if (T == 0) judge_in >> printT;
+	else printT = T;
 	assert(judge_in);
 	assert(N >= 2);
 
@@ -28,7 +41,7 @@ int main(int argc, char **argv) {
 	assert(is_sorted(all(points)));
 	assert(unique(all(points)) == points.end());
 
-	cout << N << ' ' << Q << endl;
+	cout << N << ' ' << printT << endl;
 
 	string que;
 	int queries = 0;
@@ -41,7 +54,7 @@ int main(int argc, char **argv) {
 			if (!cin) wrong_answer("eof2");
 			if (x < MIN_GUESS || x > MAX_GUESS) wrong_answer("bad x: %lld", x);
 			++queries;
-			if (queries > Q) wrong_answer("too many queries");
+			// if (queries > Q) wrong_answer("too many queries");
 			int ind = (int)(lower_bound(all(points), x) - points.begin());
 			vector<ll> cands;
 			rep(i,ind-2,ind+2) {
@@ -51,6 +64,7 @@ int main(int argc, char **argv) {
 			ll r = cands[1];
 			bool both = (cands[0] == r || (sz(cands) >= 3 && cands[2] == r));
 			cout << r << ' ' << (both ? 2 : 1) << endl;
+// cerr << x << " => " << r << ' ' << (both ? 2 : 1) << endl;
 		}
 		else if (que == "!") {
 			vector<ll> guess(N);
@@ -71,6 +85,7 @@ int main(int argc, char **argv) {
 		}
 	}
 
-	judge_message("%d/%d queries", queries, Q);
-	accept();
+	judge_message("%d queries", queries);
+	double score = groupScores[T] * scoreQueries(queries) / 100.0;
+	accept_with_score(score);
 }

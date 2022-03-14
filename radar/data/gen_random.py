@@ -12,15 +12,21 @@ def cmdlinearg(name, default=None):
 
 random.seed(int(cmdlinearg('seed', sys.argv[-1])))
 n = int(cmdlinearg('n', 100))
-nq = int(cmdlinearg('nq'))
-q = nq * n
+t = int(cmdlinearg('t'))
 
-print(n, q)
+print(n, t)
 
-values = random.sample(range(1, 10**18), n)
+maxv = 10**18
+if t == 2:
+    maxv //= 2
+
+values = random.sample(range(1, maxv), n)
 values.sort()
 
-if cmdlinearg('one', ''):
-    values[0] = 1
+if t == 1:
+    s = values[0] - 1
+    values = [x - s for x in values]
+elif t == 2:
+    values = [x * 2 for x in values]
 
 print(*values)

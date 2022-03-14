@@ -76,6 +76,7 @@ void vreport_feedback(const char* category,
     FILE *f = fopen(fname.str().c_str(), "a");
     assert(f);
     vfprintf(f, msg, pvar);
+    fprintf(f, "\n");
     fclose(f);
 }
 
