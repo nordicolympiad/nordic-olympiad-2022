@@ -37,17 +37,17 @@ void check_case(){
             }
         }
     }
-    vi row_sum(n, 0);
-    vi col_sum(m, 0);
+    vector<ll> row_sum(n, 0);
+    vector<ll> col_sum(m, 0);
     for(int c1 = 0; c1 < n; c1++){
-        int sum = 0;
+        ll sum = 0;
         for(int c2 = 0; c2 < m; c2++){
             sum += A[c1][c2];
         }
         row_sum[c1] = sum;
     }
     for(int c2 = 0; c2 < m; c2++){
-        int sum = 0;
+        ll sum = 0;
         for(int c1 = 0; c1 < n; c1++){
             sum += A[c1][c2];
         }
