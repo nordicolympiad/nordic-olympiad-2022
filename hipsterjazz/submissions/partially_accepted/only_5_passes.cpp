@@ -1,4 +1,3 @@
-// This should get 100p, but not be included for timing
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -23,12 +22,14 @@ bool within(int r, int c, int R, int C) { return 0 <= r && r < R && 0 <= c && c 
 
 vector<vi> G;
 vector<bool> side;
+vi otherside;
 
 void solve() {
   int N, M;
   cin >> N >> M;
   G.resize(N);
   side.resize(N);
+  otherside.resize(N);
   rep(i,0,M) {
     int a, b;
     cin >> a >> b;
@@ -36,17 +37,13 @@ void solve() {
     G[a].push_back(b);
     G[b].push_back(a);
   }
-again:;
+  rep(it,0,5)
   rep(i,0,N) {
-    int otherside = 0;
-    int sameside = 0;
-    trav(it, G[i]) {
-      if (side[i] != side[it]) otherside++;
-      else sameside++;
-    }
-    if (sameside > otherside) {
+    int sameside = sz(G[i]) - otherside[i];
+    if (sameside > otherside[i]) {
+      trav(it, G[i]) if (side[it] != side[i]) otherside[it]--, otherside[i]--;
       side[i] = !side[i];
-      goto again;
+      trav(it, G[i]) if (side[it] != side[i]) otherside[it]++, otherside[i]++;
     }
   }
   for (const bool& it : side) {

@@ -12,7 +12,7 @@ typedef pair<int, int> pii;
 typedef vector<int> vi;
 
 void run() {
-  int maxn = Arg("maxn", 100);
+  int maxn = Arg("maxn", 200);
   int maxm = Arg("maxm", maxn * (maxn - 1) / 2);
   int bipartite = Arg("bipartite", 0);
   int maxdeg = Arg("maxdeg", maxn);

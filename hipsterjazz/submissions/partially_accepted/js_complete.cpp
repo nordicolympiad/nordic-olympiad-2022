@@ -1,4 +1,3 @@
-// This should get 100p, but not be included for timing
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -26,32 +25,9 @@ vector<bool> side;
 
 void solve() {
   int N, M;
-  cin >> N >> M;
-  G.resize(N);
-  side.resize(N);
-  rep(i,0,M) {
-    int a, b;
-    cin >> a >> b;
-    --a; --b;
-    G[a].push_back(b);
-    G[b].push_back(a);
-  }
-again:;
-  rep(i,0,N) {
-    int otherside = 0;
-    int sameside = 0;
-    trav(it, G[i]) {
-      if (side[i] != side[it]) otherside++;
-      else sameside++;
-    }
-    if (sameside > otherside) {
-      side[i] = !side[i];
-      goto again;
-    }
-  }
-  for (const bool& it : side) {
-    cout << "PS"[it];
-  }
+  cin >> N;
+  rep(i,0,N/2) cout << "P";
+  rep(i,N/2,N) cout << "S";
   cout << endl;
   
 }
