@@ -28,7 +28,10 @@ After each query, you should make sure to flush standard output before reading t
 In Python this happens automatically, and in C++ it happens when using \verb@cout << endl@ to print a newline.
 In C you can use \verb@fflush(stdout);@ after \texttt{printf()}.
 
-If you make more make an invalid query, your program may receive \emph{either} Wrong Answer or Run Time Error.
+If you make an invalid query, your program may receive \emph{either} Wrong Answer or Run Time Error.
+
+To facilitate testing of your solution, we provide a simple tool that you can download from the sidebar of the Kattis page for this problem.
+See the comment at the top of the file for a description of how to use it.
 
 \section*{Scoring}
 Your solution will be tested on a set of test groups, each worth up to a number of points.
