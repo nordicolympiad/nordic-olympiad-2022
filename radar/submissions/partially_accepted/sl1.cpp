@@ -11,7 +11,7 @@ typedef long long ll;
 typedef pair<int, int> pii;
 typedef vector<int> vi;
 
-int Q;
+int T;
 const ll MAXV = 1'000'000'000'000'000'000LL;
 
 pair<ll, int> query(ll x) {
@@ -25,8 +25,8 @@ pair<ll, int> query(ll x) {
 
 int main() {
 	cin.tie(0)->sync_with_stdio(0);
-	int N, Q;
-	cin >> N >> Q;
+	int N;
+	cin >> N >> T;
 	ll x;
 	int count;
 	tie(x, count) = query(1);

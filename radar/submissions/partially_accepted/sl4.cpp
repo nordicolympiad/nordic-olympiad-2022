@@ -10,7 +10,7 @@ typedef long long ll;
 typedef pair<int, int> pii;
 typedef vector<int> vi;
 
-int Q;
+int T;
 const ll MAXV = 1'000'000'000'000'000'000LL;
 
 pair<ll, int> query(ll x) {
@@ -53,8 +53,8 @@ ll findA(ll b) {
 
 int main() {
 	cin.tie(0)->sync_with_stdio(0);
-	int N, Q;
-	cin >> N >> Q;
+	int N;
+	cin >> N >> T;
 	ll x;
 	int count;
 	tie(x, count) = query(1);
@@ -62,8 +62,6 @@ int main() {
 	ll a = findA(b);
 	assert(a < b);
 	vector<ll> found = {a, b};
-
-	ll avgDist = MAXV / N;
 
 	rep(it,0,N-2) {
 		ll a = found[found.size() - 2];
