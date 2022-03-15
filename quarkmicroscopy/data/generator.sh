@@ -24,6 +24,8 @@ gen_all() {
 	tc $g-incr gen_random t=$1 mode=incr
 	tc $g-decr gen_random t=$1 mode=decr
 	tc $g-incrdecr gen_random t=$1 mode=incrdecr
+	tc $g-mostlyincr1 gen_random t=$1 mode=mostlyincr1
+	tc $g-mostlyincr2 gen_random t=$1 mode=mostlyincr2
 	tc $g-alt gen_random t=$1 mode=alternating
 	tc $g-alt2 gen_random t=$1 mode=alternating2
 	tc $g-alt3 gen_random t=$1 mode=alternating3

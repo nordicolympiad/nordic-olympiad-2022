@@ -53,6 +53,23 @@ elif mode in ('incr', 'decr', 'incrdecr'):
     for i in range(1, n):
         values[i] = values[i - 1] + diffs[i - 1]
 
+elif mode in ('mostlyincr1', 'mostlyincr2'):
+    # Most distances increase from the previous one, and a small number reset
+    # down to a small distance.
+    values = [random.randint(1, maxv // n)]
+    for i in range(1, n):
+        last_diff = 1 if i == 1 else values[i - 1] - values[i - 2]
+        if mode == 'mostlyincr1':
+            max_diff = last_diff * 5
+        else:
+            max_diff = int(last_diff * 2 ** random.uniform(0, 20))
+        diff = random.randint(last_diff, max_diff)
+        p = values[i - 1] + diff
+        if p > maxv * i // n or random.random() < 0.05:
+            diff = random.randint(1, 5)
+            p = values[i - 1] + diff
+        values.append(p)
+
 elif mode == 'alternating':
     # Alternating distance 1 and max distance. This is the worst case when going
     # left -> right or right -> left in a memoryless fashion.
