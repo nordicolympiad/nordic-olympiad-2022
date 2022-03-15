@@ -16,6 +16,7 @@ m = int(cmdlinearg('m', 10))
 flipped = int(cmdlinearg('flipped', 0))
 maxc = int(cmdlinearg('maxc', 1000))
 mode = cmdlinearg('mode', 'valid')
+k = int(cmdlinearg('k', 1))
 
 C = []
 
@@ -58,22 +59,51 @@ elif mode == "plusone":
 
 elif mode == "big":
     big = maxc
-    assert(n != m)
-    nm = abs(n-m)
-    goal = big - big%nm
-    A = [big] + [0] * (m-1)
-    for _ in range(goal):
-        i = random.randrange(1, m)
-        A[i] += 1
-    for _ in range(big%nm):
-        i = random.randrange(1, m)
-        j = random.randrange(1, m)
-        A[i] += 1
-        A[j] -= 1
+    if n != m:
+        nm = abs(n-m)
+        goal = big - big%nm
+        A = [big] + [0] * (m-1)
+        for _ in range(goal):
+            i = random.randrange(1, m)
+            A[i] += 1
+        for _ in range(big%nm):
+            i = random.randrange(1, m)
+            j = random.randrange(1, m)
+            A[i] += 1
+            A[j] -= 1
+        for i in range(m):
+            A[i] = abs(A[i])
+        random.shuffle(A)
+        for _ in range(n):
+            C.append(A)
+    else:
+        rsum = 0
+        A = []
+        for i in range(m-1):
+            lim = maxc // 20
+            lim = min(lim, maxc-rsum)
+            x = random.randint(0, lim)
+            A.append(x)
+            rsum += x
+        A.append(rsum)
+        random.shuffle(A)
+        for _ in range(n):
+            C.append(A)
+elif mode == "twoparts":
+    A = [0] * m
+    for _ in range(k * maxc):
+        i = random.randrange(0, k)
+        j = random.randrange(k, m)
+
+        if A[i] < maxc and A[j] < maxc:
+            A[i] += 1
+            A[j] += 1
     for i in range(m):
         A[i] = abs(A[i])
+    random.shuffle(A)
     for _ in range(n):
         C.append(A)
+
 
 
 if flipped == 1:

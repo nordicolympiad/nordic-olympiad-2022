@@ -43,6 +43,7 @@ tc small-8 gen_subsetsum n=6 m=3 maxc=6 flipped=1
 tc small-9 gen_subsetsum n=6 m=6 maxc=6 mode=plusone
 tc small-10 gen_subsetsum n=6 m=6 maxc=6 mode=plusone flipped=1
 tc small-11 gen_subsetsum n=6 m=4 maxc=6 mode=big
+tc small-12 gen_random n=6 m=6 maxc=6 mode=even
 
 group group3 11
 limits maxn=1
@@ -65,6 +66,13 @@ tc same-6 gen_random n=$MAXN m=$MAXN maxc=$MAXN mode=same
 tc same-7 gen_random n=496 m=499 maxc=12 mode=same
 tc same-8 gen_random n=499 m=498 maxc=117 mode=same
 tc same-9 gen_random n=499 m=499 maxc=0 mode=same
+tc same-10 gen_random n=177 m=$MAXN maxc=0 mode=same
+tc same-11 gen_random n=997 m=$MAXN maxc=871 mode=same
+tc same-12 gen_random n=8 m=3 maxc=7 mode=same
+tc same-13 gen_random n=3 m=8 maxc=7 mode=same
+tc same-14 gen_random n=$MAXN m=3 maxc=937 mode=same
+tc same-15 gen_random n=7 m=$MAXN maxc=937 mode=same
+tc same-16 gen_random n=87 m=97 maxc=1000 mode=same
 tc 2
 
 group group5 15
@@ -79,6 +87,8 @@ tc diff-7 gen_random n=10 m=10 mode=diff
 tc diff-8 gen_random n=2 m=4 mode=diff2
 tc diff-9 gen_random n=10 m=20 mode=diff2
 tc diff-10 gen_random n=21 m=42 mode=diff2
+tc diff-11 gen_random n=8 m=11 mode=diff
+tc diff-12 gen_random n=15 m=5 mode=diff
 tc 1
 
 group group6 5
@@ -92,6 +102,7 @@ tc onezero-6 gen_subsetsum n=$MAXN m=$MAXN maxc=1
 tc onezero-7 gen_subsetsum n=$MAXN m=$MAXN maxc=1 flipped=1
 tc onezero-8 gen_random n=1 m=1 maxc=1
 tc onezero-9 gen_random n=1 m=6 maxc=1
+tc onezero-10 gen_random n=999 m=888 maxc=1 mode=same
 
 group group7 15
 limits square=1
@@ -102,6 +113,14 @@ tc square-4 gen_random n=$MAXN m=$MAXN maxc=177 mode=same
 tc square-5 gen_subsetsum n=$MAXN m=$MAXN
 tc square-6 gen_subsetsum n=$MAXN m=$MAXN maxc=777
 tc square-7 gen_subsetsum n=$MAXN m=$MAXN flipped=1
+tc square-8 gen_random n=$MAXN m=$MAXN mode=even
+tc square-9 gen_random n=$MAXN m=$MAXN mode=even flipped=1
+tc square-10 gen_subsetsum n=$MAXN m=$MAXN k=2 mode=twoparts
+tc square-11 gen_subsetsum n=$MAXN m=$MAXN k=10 mode=twoparts
+tc square-12 gen_subsetsum n=$MAXN m=$MAXN k=300 mode=twoparts
+tc square-13 gen_subsetsum n=$MAXN m=$MAXN k=5 mode=twoparts flipped=1
+tc square-14 gen_subsetsum n=$MAXN m=$MAXN mode=big
+tc square-15 gen_subsetsum n=$MAXN m=$MAXN mode=big flipped=1
 
 group group8 25
 limits maxn=100 maxm=100 maxc=100
@@ -118,6 +137,11 @@ tc medium-9 gen_subsetsum n=100 m=100 maxc=99 mode=plusone
 tc medium-10 gen_subsetsum n=100 m=100 maxc=79 mode=plusone flipped=1
 tc medium-11 gen_subsetsum n=80 m=100 maxc=100 mode=big
 tc medium-12 gen_subsetsum n=79 m=100 maxc=100 mode=big flipped=1
+tc medium-13 gen_random n=100 m=80 maxc=100 mode=even
+tc medium-14 gen_random n=100 m=77 maxc=100 mode=even flipped=1
+tc medium-15 gen_subsetsum n=100 m=100 maxc=100 k=2 mode=twoparts
+tc medium-16 gen_subsetsum n=100 m=100 maxc=100 k=7 mode=twoparts flipped=1
+tc medium-17 gen_random n=8 m=3 maxc=97 mode=same
 
 group group9 10
 limits maxn=$MAXN
@@ -141,3 +165,5 @@ tc large-11 gen_subsetsum n=$MAXN m=$MAXN mode=plusone
 tc large-12 gen_subsetsum n=$MAXN m=$MAXN maxc=757 mode=plusone flipped=1
 tc large-13 gen_subsetsum n=777 m=$MAXN mode=big
 tc large-14 gen_subsetsum n=177 m=$MAXN mode=big flipped=1
+tc large-15 gen_random n=$MAXN m=439 mode=even
+tc large-16 gen_random n=$MAXN m=786 mode=even flipped=1
