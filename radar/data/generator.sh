@@ -20,6 +20,7 @@ gen_all() {
 	tc $g-dense3 gen_random t=$1 mode=dense3
 	tc $g-dense4 gen_random t=$1 mode=dense4
 	tc $g-tiny gen_random t=$1 n=3 mode=random
+	tc $g-small gen_random t=$1 n=5 mode=random
 	tc $g-incr gen_random t=$1 mode=incr
 	tc $g-decr gen_random t=$1 mode=decr
 	tc $g-incrdecr gen_random t=$1 mode=incrdecr
