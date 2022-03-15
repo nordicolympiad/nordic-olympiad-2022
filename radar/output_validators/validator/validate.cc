@@ -21,7 +21,7 @@ int scoreQueries(int Q) {
 	if (Q > 15000) return 0;
 	if (Q > 5600) return 40;
 	if (Q > 3500) return 60;
-	if (Q > 2500) return 80;
+	if (Q > 2400) return 80;
 	return 100;
 }
 
