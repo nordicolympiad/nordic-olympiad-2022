@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 #
-# Testing tool for Nordic Olympiad in Informatics 2022.
+# Testing tool for the Quark Microscopy task in Nordic Olympiad in Informatics 2022.
 #
 # Usage:
 #
@@ -118,6 +118,7 @@ def main():
             try:
                 assert len(toks) == n
                 ans = [int(x) for x in toks]
+                ans.sort()
             except Exception:
                 error("Bad ! query: {}".format(line))
             if not silent:
