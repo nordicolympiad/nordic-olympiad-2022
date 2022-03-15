@@ -1,25 +1,34 @@
-\problemname{Radar}
-TODO story
+\problemname{Quark Microscopy}
+Disaster has struck!
+Niels' precious pet atom has been hit by a cosmic ray, and split up into a mass of individual quarks.
+Niels is now desperate to find the quarks and piece them together again, and has turned to you for help.
 
-There are $N$ points on a number line, and you want to find them by making a small number of queries that ask for the distance to the second closest point to some provided coordinate $x$.
+The $N$ quarks are located along a $1$ meter ($10^{18}$ attometers) long line.
+To your aid you have a very precise (but somewhat quirky) quark microscope, which is able to detect and measure distances to nearby quarks.
+Due to quantum effects, it cannot tell you the location of the nearest quark to a measured position.
+Instead, it tells you the distance to the \emph{second} closest!
+It also determines the number of quarks at that distance.
 
-That is, if the points have distances $d_1, d_2, \ldots, d_n$ to $x$, we sort them in increasing order and answer with $d_2$.
+To be more precise, you can make measurements at integer positions $x$ along the line.
+For each measurement, the distances $d_1, d_2, \ldots, d_n$ from $x$ to all the quarks will be determined, sorted in increasing order,
+and you will be given $d_2$, along with the number of indices $i$ such that $d_i = d_2$ (either $1$ or $2$).
 
-All coordinates are unique and between $1$ and $10^{18}$.
+Each quark has an integer position between $1$ and $10^{18}$ attometers, counting from the start of the line.
+As a result of the Pauli exclusion principle, no two quarks will occupy the same position.
 
-Depending on the number of queries used your program will receive different amounts of points.
+Depending on the number of measurements performed, your program will receive different amounts of points.
 
 \section*{Interaction}
 Your program will interact with the judge by reading from standard in and writing to standard out.
-First, the judge will output a line containing the number of points $N$ ($3 \le N \le 100$) and the number of the test group $T$ ($1 \le T \le 3$).
+First, the judge will output a line containing the number of quarks $N$ ($3 \le N \le 100$) and the number of the test group $T$ ($1 \le T \le 3$).
 
 Then, your program can make queries of the following forms:
 
 \begin{itemize}
-  \item \texttt{? x} ($-10^{18} \le x \le 2\cdot 10^{18}$): find the distance to the second closest point to $x$.
+  \item \texttt{? x} ($-10^{18} \le x \le 2\cdot 10^{18}$): find the distance to the second closest quark to $x$.
     The judge will respond with two space-separated numbers $r$, $m$,
-    where $r$ is the distance to the second closest point, and $m$ is the number of points at that distance (either $1$ or $2$).
-  \item \texttt{! $a_1$ $a_2$ ... $a_n$}: guess the positions of the points ($1 \le a_i \le 10^{18}$).
+    where $r$ is the distance to the second closest quark, and $m$ is the number of quarks at that distance (either $1$ or $2$).
+  \item \texttt{! $a_1$ $a_2$ ... $a_n$}: guess the positions of the quarks ($1 \le a_i \le 10^{18}$).
     $a_1, a_2, \ldots, a_n$ may be given in any order.
     No additional queries should be made after this.
 \end{itemize}
@@ -41,7 +50,7 @@ To get the points for a test group you need to solve all test cases in the test 
 \begin{tabular}{| l | l | l |}
   \hline
   Group & Points       & Constraints \\ \hline
-  $1$   & $40 \cdot r$ & One of the points is located at position $1$ \\ \hline
+  $1$   & $40 \cdot r$ & One of the quarks is located at position $1$ \\ \hline
   $2$   & $40 \cdot r$ & All coordinates are even \\ \hline
   $3$   & $20 \cdot r$ & No additional constraints \\ \hline
 \end{tabular}
